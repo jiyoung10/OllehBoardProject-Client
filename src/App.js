@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import GlobalStyle from "./GlobalStyle";
+import { Outlet } from "react-router-dom";
+
+import { Provider } from "react-redux";
+import { store } from "./pages/redux/store";
+import { useEffect } from "react";
+import { useRef } from "react";
+import NavBar from "./components/Common/NavBar/Navbar";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <GlobalStyle />
+      <NavBar />
+      <Outlet />
+    </Provider>
   );
 }
 
